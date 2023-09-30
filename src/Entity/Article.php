@@ -4,9 +4,9 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -14,7 +14,7 @@ class Article
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column]
     private ?int $code = null;
@@ -36,8 +36,7 @@ class Article
         $this->invoiceItems = new ArrayCollection();
     }
 
-
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -88,5 +87,10 @@ class Article
         $this->created_at = $created_at;
 
         return $this;
+    }
+
+    public function getInvoiceItems(): Collection
+    {
+        return $this->invoiceItems;
     }
 }
