@@ -38,6 +38,7 @@ class InvoiceType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false, // Pass items by reference to update the entity
+                'block_name' => 'invoice_item_type',
             ])
             ->add('total_price', NumberType::class, [
                 'label' => 'Total Price',

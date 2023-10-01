@@ -31,7 +31,7 @@ class InvoiceItemType extends AbstractType
         $resolver->setDefaults([
             'data_class' => InvoiceItem::class,
             'attr' => ['class' => 'custom-invoice-item-form'], // Add a custom CSS class to the form
-//            'block_prefix' => 'invoice_item_type'
+            'block_prefix' => 'invoice_item_type'
         ]);
     }
 }

@@ -99,6 +99,7 @@
 
                 <h3>Invoice Items</h3>
                 <div id="invoice-items"
+                     data-index="{{ form.invoice_items|length > 0 ? form.invoice_items|last.vars.name + 1 : 0 }}"
                      data-prototype="{{ form_widget(
                          form.invoice_items.vars.prototype,
                          {'block_prefix': 'invoice_item_type'}
