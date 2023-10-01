@@ -17,12 +17,12 @@ class InvoiceItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options):void
     {
         $builder
-            ->add('name', TextType::class, ['label' => 'Item Name'])
             ->add('article', EntityType::class, [
                 'class' => Article::class,
-                'choice_label' => 'name', // Display the article name as the choice label
+                'choice_label' => 'name',
                 'label' => 'Article',
             ])
+            ->add('price', TextType::class, ['label' => 'Item Price'])
             ->add('quantity', IntegerType::class, ['label' => 'Quantity'])
             ->add('totalPrice', NumberType::class, ['label' => 'Total Price']);
     }
@@ -30,6 +30,8 @@ class InvoiceItemType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => InvoiceItem::class,
+            'attr' => ['class' => 'custom-invoice-item-form'], // Add a custom CSS class to the form
+//            'block_prefix' => 'invoice_item_type'
         ]);
     }
 }

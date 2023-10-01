@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\InvoiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InvoiceRepository::class)]
@@ -94,7 +93,6 @@ class Invoice
     }
 
     // TODO: move to service
-    #[ORM\PrePersist]
     public function addInvoiceItem(InvoiceItem $invoiceItem): self
     {
         if (!$this->invoiceItems->contains($invoiceItem)) {
@@ -105,15 +103,11 @@ class Invoice
         return $this;
     }
 
-    /**
-     * Remove an invoice item from the invoice.
-     */
-    #[ORM\PreRemove]
     public function removeInvoiceItem(InvoiceItem $invoiceItem): self
     {
         if ($this->invoiceItems->contains($invoiceItem)) {
             $this->invoiceItems->removeElement($invoiceItem);
-            // Set the owning side to null (unless already changed)
+            // Set the owning side to null (unless already changed) fix property to nullable
             if ($invoiceItem->getInvoice() === $this) {
                 $invoiceItem->setInvoice(null);
             }

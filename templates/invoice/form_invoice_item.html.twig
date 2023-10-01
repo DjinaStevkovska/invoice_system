@@ -1,0 +1,37 @@
+{# templates/form_invoice_item.html.twig #}
+
+<div class="custom-invoice-item-form row">
+    <div class="col-md-3">
+        <div class="mb-3">
+            {{ form_label(form.name, 'Item Name', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="mb-3">
+            {{ form_label(form.article, 'Article', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.article, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="mb-3">
+            {{ form_label(form.quantity, 'Quantity', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.quantity, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="mb-3">
+            {{ form_label(form.totalPrice, 'Total Price', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.totalPrice, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="mb-3">
+            <button type="button" class="btn btn-danger remove-invoice-item">Remove</button>
+        </div>
+    </div>
+</div>
