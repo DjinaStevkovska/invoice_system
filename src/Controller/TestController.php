@@ -17,6 +17,6 @@ class TestController extends AbstractController
             'current_year' => date('Y'),
             'site_name' => 'Invoice System',
         ];
-        return $this->render('pages/child.html.twig', $data);
+        return $this->render('pages/test.html.twig', $data);
     }
 }

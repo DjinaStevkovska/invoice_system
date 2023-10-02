@@ -1,31 +1,32 @@
 {# templates/invoice/form_invoice_item.html.twig #}
 
+{% for invoice_item in invoice_items %}
 <div class="custom-invoice-item-form row">
     <div class="col-md-3">
         <div class="mb-3">
-            {{ form_label(form.name, 'Item Name', {'label_attr': {'class': 'form-label'}}) }}
-            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_label(form.invoice_item.name, 'Item Name', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.invoice_item.name, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
 
     <div class="col-md-3">
         <div class="mb-3">
-            {{ form_label(form.article, 'Article', {'label_attr': {'class': 'form-label'}}) }}
-            {{ form_widget(form.article, {'attr': {'class': 'form-control'}}) }}
+            {{ form_label(form.invoice_item.article, 'Article', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.invoice_item.article, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="mb-3">
-            {{ form_label(form.quantity, 'Quantity', {'label_attr': {'class': 'form-label'}}) }}
-            {{ form_widget(form.quantity, {'attr': {'class': 'form-control'}}) }}
+            {{ form_label(form.invoice_item.quantity, 'Quantity', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.invoice_item.quantity, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
 
     <div class="col-md-2">
         <div class="mb-3">
-            {{ form_label(form.totalPrice, 'Total Price', {'label_attr': {'class': 'form-label'}}) }}
-            {{ form_widget(form.totalPrice, {'attr': {'class': 'form-control'}}) }}
+            {{ form_label(form.invoice_item.totalPrice, 'Total Price', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.invoice_item    .totalPrice, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
 
@@ -35,3 +36,4 @@
         </div>
     </div>
 </div>
+{% endfor %}
