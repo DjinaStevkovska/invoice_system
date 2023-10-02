@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <meta charset="UTF-8">
+            <title>{% block title %}{% endblock %} - System</title>
+
+            {% block stylesheets %}<link rel="stylesheet" href="style.css"/>{% endblock %}
+            {% block javascripts %}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+    <header>
+        <h1>{% block header %}base header navigation here{% endblock %}</h1>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} {{ site_name }} by <a href="http://domain.invalid/">MOTOR OIL</a>.</p>
+    </footer>
+    </body>
+</html>
