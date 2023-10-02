@@ -1,0 +1,66 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}Invoicing{% endblock %}
+{% block head %}
+    {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/home/styles.css') }}"/>{% endblock %}
+    {% block javascripts %}
+        <script>
+            function toggleMenu() {
+                const nav = document.getElementById("nav");
+                nav.classList.toggle("navigation");
+            }
+        </script>
+    {% endblock %}
+{% endblock %}
+
+
+{% block header %}
+    <div class="container">
+        <a class="logo" href="#">Invoicing System</a>
+        <button onclick="toggleMenu()">&#9776;</button>
+        <nav class="navigation" id="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/invoice/create">Invoices</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h2>Welcome to the Invoicing System</h2>
+        <p>Effortlessly manage your invoicing process and clients</p>
+        <a href="#" class="btn-primary centered-button">Get Started</a>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <div class="feature">
+            <i class="fas fa-file-invoice-dollar icon"></i>
+            <h3>Create Invoices</h3>
+            <p>Easily create and send professional invoices to your clients.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-users icon"></i>
+            <h3>Manage Clients</h3>
+            <p>Keep track of your clients and their contact information.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-chart-line icon"></i>
+            <h3>Generate Reports</h3>
+            <p>Generate detailed reports to analyze your financial data.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+    <div class="container">
+        <p>&copy; 2023 Invoicing System. All rights reserved.</p>
+    </div>
+{% endblock %}

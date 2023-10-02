@@ -1,7 +1,7 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
     form_themes:
-        - 'invoice/form_invoice_item.html.twig'
+        - 'pages/invoice/form_invoice_item.html.twig'
     debug: true
 when@test:
     twig:

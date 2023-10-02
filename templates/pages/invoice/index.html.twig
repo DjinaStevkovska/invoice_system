@@ -12,7 +12,7 @@
                 <h1>Create Invoice</h1>
             </div>
             <div class="card-body">
-                {% form_theme form 'invoice/form_invoice_item.html.twig' %}
+                {% form_theme form 'pages/invoice/form_invoice_item.html.twig' %}
                 {{ form_start(form) }}
                 <div class="mb-3">
                     {{ form_label(form.customer, 'Customer', {'label_attr': {'class': 'form-label'}}) }}
