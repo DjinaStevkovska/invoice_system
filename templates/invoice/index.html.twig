@@ -1,69 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout/base.html.twig' %}
 
-{% block title %}Create Invoice{% endblock %}
-
-{% block stylesheets %}
+{% block title %}Invoicing{% endblock %}
+{% block head %}
     {{ parent() }}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-    <style>
-        .container {
-            max-width: 600px;
-        }
-
-        .card {
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            border-radius: 10px 10px 0 0;
-        }
-
-        .form-label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .invoice-items-container {
-            margin-top: 20px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            padding: 10px;
-        }
-
-        .invoice-item-fields {
-            border-bottom: 1px solid #ced4da;
-            padding: 10px 0;
-        }
-
-        .btn-create-invoice {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .btn-create-invoice:hover {
-            background-color: #1e7e34;
-        }
-    </style>
 {% endblock %}
 
-{% block body %}
+{% block content %}
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -120,53 +62,3 @@
     </div>
 {% endblock %}
 
-
-{% block javascripts %}
-    {{ parent() }}
-    <script>
-        function updateCustomerFields(customerId) {
-            const apiUrl = '/api/customer/' + customerId;
-
-            fetch(apiUrl)
-                .then((response) => response.json())
-                .then((data) => {
-                    // console.log(data);
-                    for (const field of document.querySelectorAll('[data-field-name]')) {
-                        const fieldName = field.getAttribute('data-field-name');
-                        if (data[fieldName]) {
-                            field.value = data[fieldName];
-                        }
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        }
-
-        //ADD INVOICE ITEM
-        document.addEventListener('DOMContentLoaded', function() {
-            const addButton = document.getElementById('add-invoice-item');
-            const invoiceItems = document.getElementById('invoice-items');
-
-            addButton.addEventListener('click', function() {
-                // Get the prototype template and replace "__name__" with a unique index
-                const prototype = invoiceItems.getAttribute('data-prototype');
-                const newIndex = invoiceItems.querySelectorAll('.custom-invoice-item-form').length;
-                const newForm = prototype.replace(/__name__/g, newIndex.toString());
-
-                // add new invoice item row add it to the container
-                const div = document.createElement('div');
-                div.classList.add('custom-invoice-item');
-                div.innerHTML = newForm;
-                invoiceItems.appendChild(div);
-
-                // remove button using event delegation
-                div.addEventListener('click', function(event) {
-                    if (event.target.classList.contains('remove-invoice-item')) {
-                        div.remove();
-                    }
-                });
-            });
-        });
-    </script>
-{% endblock %}
