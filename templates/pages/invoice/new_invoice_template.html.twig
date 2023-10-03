@@ -30,28 +30,53 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="invoice-title">
-                        <h4 class="float-right font-size-15">Invoice #{{ form_row(form.invoiceNumber) }} <span class="badge bg-success font-size-12 ms-2">{{ form_row(form.status) }}</span></h4>
-                        <div class="mb-4">
-                            <h2 class="mb-1 text-muted">{{ form_row(form.companyName) }}</h2>
-                        </div>
-                        <div class="text-muted">
-                            <p class="mb-1">{{ form_row(form.companyAddress) }}</p>
-                            <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> {{ form_row(form.companyEmail) }}</p>
-                            <p><i class="uil uil-phone me-1"></i> {{ form_row(form.companyPhone) }}</p>
-                        </div>
-                    </div>
-
+                    {% include '/pages/invoice/new_invoice_header.html.twig' %}
                     <hr class="my-4">
 
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="text-muted">
                                 <h5 class="font-size-16 mb-3">Billed To:</h5>
-                                <h5 class="font-size-15 mb-2">{{ form_row(form.billedToName) }}</h5>
-                                <p class="mb-1">{{ form_row(form.billedToAddress) }}</p>
-                                <p class="mb-1">{{ form_row(form.billedToEmail) }}</p>
-                                <p>{{ form_row(form.billedToPhone) }}</p>
+                                <h5 class="font-size-15 mb-2">
+                                    <label>
+                                        <input
+                                                name="{{ field_name(form.billedToName) }}"
+                                                value="{{ field_value(form.billedToName) }}"
+                                                placeholder="{{ field_label(form.billedToName) }}"
+                                                class="form-control"
+                                        >
+                                    </label>
+                                </h5>
+                                <p class="mb-1">
+                                    <label>
+                                        <input
+                                           name="{{ field_name(form.billedToAddress) }}"
+                                           value="{{ field_value(form.billedToAddress) }}"
+                                           placeholder="{{ field_label(form.billedToAddress) }}"
+                                           class="form-control"
+                                        >
+                                    </label>
+                                </p>
+                                <p class="mb-1">
+                                    <label>
+                                        <input
+                                           name="{{ field_name(form.billedToEmail) }}"
+                                           value="{{ field_value(form.billedToEmail) }}"
+                                           placeholder="{{ field_label(form.billedToEmail) }}"
+                                           class="form-control"
+                                        >
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input
+                                            name="{{ field_name(form.billedToPhone) }}"
+                                            value="{{ field_value(form.billedToPhone) }}"
+                                            placeholder="{{ field_label(form.billedToPhone) }}"
+                                            class="form-control"
+                                        >
+                                    </label>
+                                </p>
                             </div>
                         </div>
                         <!-- columnEnd -->
@@ -59,15 +84,42 @@
                             <div class="text-muted text-sm-right">
                                 <div>
                                     <h5 class="font-size-15 mb-1">Invoice No:</h5>
-                                    <p>#{{ form_row(form.invoiceNo) }}</p>
+                                    <p>
+                                        <label>
+                                            <input
+                                                name="{{ field_name(form.invoiceNo) }}"
+                                                value="{{ field_value(form.invoiceNo) }}"
+                                                placeholder="{{ field_label(form.invoiceNo) }}"
+                                                class="form-control"
+                                            >
+                                        </label>
+                                    </p>
                                 </div>
                                 <div class="mt-4">
                                     <h5 class="font-size-15 mb-1">Invoice Date:</h5>
-                                    <p>{{ form_row(form.invoiceDate) }}</p>
+                                    <p>
+                                        <label>
+                                            <input
+                                                name="{{ field_name(form.invoiceDate) }}"
+                                                value="{{ field_value(form.invoiceDate) }}"
+                                                placeholder="{{ field_label(form.invoiceDate) }}"
+                                                class="form-control"
+                                            >
+                                        </label>
+                                    </p>
                                 </div>
                                 <div class="mt-4">
                                     <h5 class="font-size-15 mb-1">Order No:</h5>
-                                    <p>#{{ form_row(form.orderNo) }}</p>
+                                    <p>
+                                        <label>
+                                            <input
+                                                name="{{ field_name(form.orderNo) }}"
+                                                value="{{ field_value(form.orderNo) }}"
+                                                placeholder="{{ field_label(form.orderNo) }}"
+                                                class="form-control"
+                                            >
+                                        </label>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -104,26 +156,45 @@
                                 {% endfor %}
                                 <tr>
                                     <th scope="row" colspan="4" class="text-right">Sub Total</th>
-                                    <td class="text-right">$ {{ form_row(form.subTotal) }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="4" class="border-0 text-right">
-                                        Discount :</th>
-                                    <td class="border-0 text-right">- $ {{ form_row(form.discount) }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" colspan="4" class="border-0 text-right">
-                                        Shipping Charge :</th>
-                                    <td class="border-0 text-right">$ {{ form_row(form.shippingCharge) }}</td>
+                                    <td class="text-right">
+                                        <label>
+                                            <input
+                                                name="{{ field_name(form.subTotal) }}"
+                                                value="{{ field_value(form.subTotal) }}"
+                                                placeholder="{{ field_label(form.subTotal) }}"
+                                                class="form-control"
+                                            >
+                                        </label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row" colspan="4" class="border-0 text-right">
                                         Tax</th>
-                                    <td class="border-0 text-right">$ {{ form_row(form.tax) }}</td>
+                                    <td class="border-0 text-right">
+                                        <label>
+                                            <input
+                                                name="{{ field_name(form.tax) }}"
+                                                value="{{ field_value(form.tax) }}"
+                                                placeholder="{{ field_label(form.tax) }}"
+                                                class="form-control"
+                                            >
+                                        </label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row" colspan="4" class="border-0 text-right">Total</th>
-                                    <td class="border-0 text-right"><h4 class="m-0 fw-semibold">$ {{ form_row(form.total) }}</h4></td>
+                                    <td class="border-0 text-right">
+                                        <h4 class="m-0 fw-semibold">
+                                            <label>
+                                                <input
+                                                    name="{{ field_name(form.total) }}"
+                                                    value="{{ field_value(form.total) }}"
+                                                    placeholder="{{ field_label(form.total) }}"
+                                                    class="form-control"
+                                                >
+                                            </label>
+                                        </h4>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
